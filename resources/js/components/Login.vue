@@ -27,9 +27,9 @@
                                     {{ processing ? "Please wait" : "Login" }}
                                 </button>
                             </div>
-                            <div class="col-12 text-center">
+                            <!-- <div class="col-12 text-center">
                                 <label>Don't have an account? <router-link :to="{name:'register'}">Register Now!</router-link></label>
-                            </div>
+                            </div> -->
                         </form>
                     </div>
                 </div>
