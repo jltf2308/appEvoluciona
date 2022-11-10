@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CompanyController;
+use App\Http\Controllers\api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,11 +21,11 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
+    // Route::get('/user', function (Request $request) {
+    //     return $request->user()->load('person');
+    // });
     Route::apiResource('company', CompanyController::class);
     // Route::apiResource('person', PersonController::class);
-    // Route::apiResource('user', UserController::class);
+    Route::apiResource('user', UserController::class);
     // Route::apiResource('questionary', QuestionaryController::class);
 });

@@ -95,6 +95,14 @@ const routes = [
                     title: `profesionales`
                 }
             },
+            {
+                name: "profesionalForm",
+                path: 'create',
+                component: ProfesionalForm,
+                meta: {
+                    title: `profesionalForm`
+                }
+            },
         ]
     },
 ]

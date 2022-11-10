@@ -12,7 +12,7 @@
                     <tbody>
                         <template v-if="body.length == 0">
                             <tr>
-                                <td align="center" :colspan="Object.keys(this.header).length"> No existen Registros</td>
+                                <td align="center" :colspan="Object.keys(this.header).length +1"> No existen Registros</td>
                             </tr>
                         </template>
                         <template v-else>

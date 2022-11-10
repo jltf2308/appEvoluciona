@@ -19,7 +19,6 @@
 
 <script>
 import TableComponent from './common/tableComponent.vue';
-import { mapActions } from 'vuex'
 export default {
     name:"Clientes",
     components:{
@@ -32,16 +31,22 @@ export default {
                 1:'Número registro fiscal',
                 2:'Nombre empresa',
             },
-            body:this.$store.state.company.companies.data,
+            body:[],
             processing:false
         }
     },
     methods:{
-        ...mapActions({
-            getCompanies:'company/getCompanies'
-        }),
+        async getCompanies(){
+            try {
+                await axios.get('/sanctum/csrf-cookie');
+                const res= await axios.get('/api/company')
+                this.body = res.data.companies
+            } catch ({ response: { data: data_1 } }) {
+                console.log(response)
+            }
+        },
     },
-    created(){
+    mounted(){
         this.getCompanies();
     }
 }

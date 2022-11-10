@@ -22,23 +22,8 @@ class CompanySeeder extends Seeder
         DB::table('companies')->insert([
             [
                 'id' => 1,
-                'business_name' => 'test',
+                'business_name' => 'Evoluciona C.A.',
                 'register_number' => '12345678'
-            ],
-            [
-                'id' => 2,
-                'business_name' => 'test2',
-                'register_number' => '00000000'
-            ],
-            [
-                'id' => 3,
-                'business_name' => 'test3',
-                'register_number' => '99999999'
-            ],
-            [
-                'id' => 4,
-                'business_name' => 'test4',
-                'register_number' => '44444444'
             ],
         ]);
     }

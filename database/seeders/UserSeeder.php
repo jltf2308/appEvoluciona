@@ -22,11 +22,11 @@ class UserSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
         DB::table('users')->insert([
             'id' => 1,
-            'name' => 'Admin',
-            'email' => 'test@test.com',
+            'email' => 'admin@admin.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('password'),
+            'password' => Hash::make('admin'),
             'remember_token' => null,
+            'person_id' => 1
         ]);
     }
 }

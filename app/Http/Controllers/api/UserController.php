@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Company as ResourcesCompany;
-use App\Http\Resources\CompanyCollection;
-use App\Models\Company;
-use Symfony\Component\HttpFoundation\Response;
+use App\Http\Resources\User as ResourcesUser;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-class CompanyController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +17,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::all();
-        return response()->json([
-            'companies'=> new CompanyCollection($companies),
-        ], Response::HTTP_OK);
+        //
     }
 
     /**
@@ -32,14 +28,7 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $company = new Company();
-        $company->business_name = $request->business_name;
-        $company->register_number = $request->register_number;
-        $company->save();
-
-        return response()->json([
-            "data" => new ResourcesCompany($company)
-        ], response::HTTP_CREATED);
+        //
     }
 
     /**
@@ -48,9 +37,12 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        //
+        $user = User::find($request->user()->id);
+        return response()->json([
+            'user'=> new ResourcesUser($user)
+        ], Response::HTTP_OK);
     }
 
     /**

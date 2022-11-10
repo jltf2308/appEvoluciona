@@ -3,13 +3,9 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Company as ResourcesCompany;
-use App\Http\Resources\CompanyCollection;
-use App\Models\Company;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 
-class CompanyController extends Controller
+class PersonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +14,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::all();
-        return response()->json([
-            'companies'=> new CompanyCollection($companies),
-        ], Response::HTTP_OK);
+        //
     }
 
     /**
@@ -32,14 +25,7 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $company = new Company();
-        $company->business_name = $request->business_name;
-        $company->register_number = $request->register_number;
-        $company->save();
-
-        return response()->json([
-            "data" => new ResourcesCompany($company)
-        ], response::HTTP_CREATED);
+        //
     }
 
     /**
