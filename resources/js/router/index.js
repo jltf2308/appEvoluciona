@@ -14,6 +14,8 @@ const DahboardLayout = () => import('@/components/layouts/Default.vue')
 const Dashboard = () => import('@/components/Dashboard.vue')
 const Clientes = () => import('@/components/Clientes.vue')
 const Profesionales = () => import('@/components/Profesionales.vue')
+const ProfesionalForm = () => import('@/components/forms/ProfesionalForm.vue')
+const ClienteForm = () => import('@/components/forms/ClienteForm.vue')
 /* Authenticated Component */
 
 
@@ -66,6 +68,14 @@ const routes = [
                 component: Clientes,
                 meta: {
                     title: `clientes`
+                }
+            },
+            {
+                name: "clientesForm",
+                path: 'create',
+                component: ClienteForm,
+                meta: {
+                    title: `clientesForm`
                 }
             },
         ]

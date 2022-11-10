@@ -5,7 +5,9 @@
                 <h3>Clientes</h3>
             </div>
             <div class="col-6 text-end align-middle">
-                <a class="btn btn-primary" href="#" role="button">Crear </a>
+                <router-link :to="{name:'clientesForm'}" class="btn btn-primary">
+                    Agregar Nuevo Cliente
+                </router-link>
             </div>
         </div>
         <br>
@@ -39,9 +41,8 @@ export default {
             getCompanies:'company/getCompanies'
         }),
     },
-    mounted(){
+    created(){
         this.getCompanies();
-        console.log(this.body)
     }
 }
 </script>

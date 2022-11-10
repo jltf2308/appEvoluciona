@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Company as ResourcesCompany;
 use App\Http\Resources\CompanyCollection;
 use App\Models\Company;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,7 +32,14 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $company = new Company();
+        $company->business_name = $request->business_name;
+        $company->register_number = $request->register_number;
+        $company->save();
+
+        return response()->json([
+            "data" => new ResourcesCompany($company)
+        ], response::HTTP_CREATED);
     }
 
     /**
