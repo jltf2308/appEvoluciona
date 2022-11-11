@@ -19,7 +19,7 @@
                             <tr v-for="(value, name) in body" :key="name">
                                 <td class="align-middle text-center">{{name+1}}</td>
                                 <template v-for="(val, index) in value">
-                                    <td class="align-middle" v-if="index != 'id'">{{val}}</td>
+                                    <td class="align-middle" v-if="index != 'id' && index != 'type'">{{val}}</td>
                                 </template>
                                 <td class="text-center align-middle p-1">
                                     <div class="btn-group" role="group" aria-label="Basic example">

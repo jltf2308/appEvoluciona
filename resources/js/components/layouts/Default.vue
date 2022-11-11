@@ -23,7 +23,7 @@
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ `${user.person.first_name} ${user.person.last_name}` }}
+                                    {{ user.person.fullName }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="javascript:void(0)" @click="logout">Logout</a>
