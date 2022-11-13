@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\api\PersonController;
 use App\Http\Controllers\api\UserController;
+use App\Http\Controllers\ProfessionalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,5 +29,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('company', CompanyController::class);
     Route::apiResource('person', PersonController::class);
     Route::apiResource('user', UserController::class);
+    Route::apiResource('professional', ProfessionalController::class);
     // Route::apiResource('questionary', QuestionaryController::class);
 });

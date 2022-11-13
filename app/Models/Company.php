@@ -20,4 +20,8 @@ class Company extends Model
     {
         return $this->hasMany(Person::class);
     }
+
+    public function professionals(){
+        return $this->belongsToMany(Person::class);
+    }
 }

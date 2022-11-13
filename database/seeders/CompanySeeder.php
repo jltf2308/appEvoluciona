@@ -25,6 +25,11 @@ class CompanySeeder extends Seeder
                 'business_name' => 'Evoluciona C.A.',
                 'register_number' => '12345678'
             ],
+            [
+                'id' => 2,
+                'business_name' => 'Hispano Soluciones C.A.',
+                'register_number' => '987654321'
+            ],
         ]);
     }
 }

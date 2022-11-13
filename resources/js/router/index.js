@@ -16,6 +16,8 @@ const Clientes = () => import('@/components/Clientes.vue')
 const Profesionales = () => import('@/components/Profesionales.vue')
 const ProfesionalForm = () => import('@/components/forms/ProfesionalForm.vue')
 const ClienteForm = () => import('@/components/forms/ClienteForm.vue')
+const profesionalesAsociados = () => import('@/components/ProfesionalesAsociados.vue')
+const asociarProfesionales = () => import('@/components/forms/AsociarProfesionalesForm.vue')
 /* Authenticated Component */
 
 
@@ -67,7 +69,7 @@ const routes = [
                 path: '',
                 component: Clientes,
                 meta: {
-                    title: `clientes`
+                    title: `Clientes`
                 }
             },
             {
@@ -75,7 +77,25 @@ const routes = [
                 path: 'create',
                 component: ClienteForm,
                 meta: {
-                    title: `clientesForm`
+                    title: `Agregar Cliente`
+                }
+            },
+            {
+                path: 'profesionales/:companyId',
+                name: "profesionalesAsociados",
+                component: profesionalesAsociados,
+                props: true,
+                meta: {
+                    title: `Profesionales Asociados`
+                }
+            },
+            {
+                path: 'profesionales/:companyId/asociarProfesionales',
+                name: "asociarProfesionalesForm",
+                component: asociarProfesionales,
+                props: true,
+                meta: {
+                    title: `Asociar Profesionales`
                 }
             },
         ]
@@ -92,7 +112,7 @@ const routes = [
                 path: '',
                 component: Profesionales,
                 meta: {
-                    title: `profesionales`
+                    title: `Profesionales`
                 }
             },
             {

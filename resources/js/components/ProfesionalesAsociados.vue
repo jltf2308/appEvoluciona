@@ -2,11 +2,14 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <h3>Profesionales</h3>
+                <h3>Profesionales Asociados al cliente: {{companyName}}</h3>
             </div>
             <div class="col-6 text-end align-middle">
-                <router-link :to="{name:'profesionalForm'}" class="btn btn-primary">
-                    Agregar Nuevo Profesional
+                <router-link :to="{
+                        name:'asociarProfesionalesForm',
+                        params:{ companyId:companyId }
+                    }" class="btn btn-primary">
+                    Asociar Nuevo Profesional
                 </router-link>
             </div>
         </div>
@@ -20,36 +23,45 @@
 <script>
 import TableComponent from './common/tableComponent.vue';
 export default {
-    name:"profesionales",
+    name:"profesionalesAsociados",
+    props:{
+        companyId: {
+            required: true,
+        },
+        companyName: {
+            type:String,
+            required: true,
+        },
+    },
     components:{
         TableComponent
     },
     data(){
         return {
+            
             header:{
                 0:'#',
                 1:'Número registro fiscal',
                 2:'Nombre y Apellido',
                 3:'Correo Electrónico',
-                4:'Cargo'
+                4:'Cargo',
             },
             body:[],
             processing:false,
             buttons:[
-                {
-                    routeParams:{"btn-info"},
-                    classStyle:"Ver Profesionales Asociados",
-                    icon:"group_add",
-                    title:""
-                }
-            ]
+                // {
+                //     color:"btn-info",
+                //     toolTip:"Ver Profesionales Asociados",
+                //     icon:"group_add",
+                // }
+            ],
         }
     },
     methods:{
         async getPeople(){
             try {
                 await axios.get('/sanctum/csrf-cookie');
-                const res= await axios.get('/api/person')
+                const res= await axios.get('/api/professional/'+this.companyId)
                 this.body = res.data.people
             } catch ({ response: { data: data_1 } }) {
                 console.log(response)
@@ -57,7 +69,10 @@ export default {
         },
     },
     mounted(){
+        // this.companyId = this.$route.params.companyId
         this.getPeople();
+        // console.log(this.companyId)
+
     }
 }
 </script>

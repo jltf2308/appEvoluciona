@@ -12,7 +12,7 @@
         </div>
         <br>
         <div class="row">
-            <TableComponent :header="header" :body="body"></TableComponent>
+            <TableComponent :header="header" :body="body" :buttons="buttons"></TableComponent>
         </div>
     </div>
 </template>
@@ -32,7 +32,23 @@ export default {
                 2:'Nombre empresa',
             },
             body:[],
-            processing:false
+            processing:false,
+            
+            buttons:[
+                {
+                    routeParams:{
+                        haveParams:true,
+                        name:"profesionalesAsociados",
+                        params:[
+                            "companyId",
+                            "companyName",
+                        ],
+                    },
+                    classStyle:"btn-danger",
+                    icon:"group_add",
+                    title:"Ver Profesionales Asociados",
+                }
+            ]
         }
     },
     methods:{
