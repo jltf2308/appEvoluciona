@@ -46,9 +46,19 @@ class PersonSeeder extends Seeder
                 'last_name' => 'Tovar',
                 'register_number' => '12356789',
                 'email' => 'test@test.com',
-                'position' => 'Professional',
+                'position' => 'Desarrollador',
                 'type' => 'Professional',
                 'company_id' => 1
+            ],
+            [
+                'id' => 4,
+                'first_name' => 'Adelis',
+                'last_name' => 'Araul',
+                'register_number' => '12356789',
+                'email' => 'admin@hispanos.com',
+                'position' => 'Administrador',
+                'type' => 'Client',
+                'company_id' => 2
             ]
         ]);
     }

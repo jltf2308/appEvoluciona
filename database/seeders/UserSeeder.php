@@ -21,12 +21,22 @@ class UserSeeder extends Seeder
         DB::table('users')->truncate();
         Schema::enableForeignKeyConstraints();
         DB::table('users')->insert([
-            'id' => 1,
-            'email' => 'admin@admin.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('admin'),
-            'remember_token' => null,
-            'person_id' => 1
+            [
+                'id' => 1,
+                'email' => 'admin@admin.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('admin'),
+                'remember_token' => null,
+                'person_id' => 1
+            ],
+            [
+                'id' => 2,
+                'email' => 'hispano@admin.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('admin'),
+                'remember_token' => null,
+                'person_id' => 4
+            ],
         ]);
     }
 }
