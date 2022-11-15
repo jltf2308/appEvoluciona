@@ -17,10 +17,6 @@
                         <li class="nav-item">
                             <router-link :to="{name:'profesionales'}" class="nav-link">Profesionales</router-link>
                         </li>
-                        <li class="nav-item" v-if="user.person.type == 'Admin'">
-                            <router-link :to="{name:'usuarios'}" class="nav-link">Usuarios</router-link>
-                        </li>
-
                     </ul>
                     <div class="d-flex">
                         <ul class="navbar-nav">

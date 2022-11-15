@@ -100,7 +100,8 @@ const routes = [
                 component: UserForm,
                 meta: {
                     title: `userForm`
-                }
+                },
+                props:true
             },
             // {
             //     path: 'profesionales/:companyId?',

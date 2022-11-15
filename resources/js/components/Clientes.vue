@@ -102,16 +102,9 @@ export default {
                     {
                         type:'routeButton',
                         name:"usuarios",
-                        hasParams:true,
-                        // routeParams:{
-                        //     name:"usuarios",
-                        //     params:[
-                        //         "companyId",
-                        //     ],
-                        // },
                         classStyle:"btn-info",
                         icon:"add_circle",
-                        title:"Agregar Usuario",
+                        title:"Ver Usuarios",
                     },                    
                 ]
         }
