@@ -85,7 +85,7 @@
 
         },
         mounted(){
-            console.log(this.buttons);
+            
         }
     }
 </script>

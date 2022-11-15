@@ -24,6 +24,10 @@ class PersonController extends Controller
             $people = Person::where('type', 'Professional')->get();
         }
 
+        if($user->person->type == 'Client'){
+            $people = $user->person->company->professionals;
+        }
+
         return response()->json([
             'people'=> new PersonCollection($people),
         ], Response::HTTP_OK);

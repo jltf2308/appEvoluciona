@@ -2,11 +2,11 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <h3>Clientes</h3>
+                <h3>Usuarios</h3>
             </div>
             <div class="col-6 text-end align-middle">
-                <router-link :to="{name:'clientesForm'}" class="btn btn-primary">
-                    Agregar Nuevo Cliente
+                <router-link :to="{name:'userForm'}" class="btn btn-primary">
+                    Agregar Nuevo Usuario
                 </router-link>
             </div>
         </div>
@@ -50,22 +50,16 @@
                                                         </button>
                                                     </template>
                                                     <template v-if="nameButton.type == 'routeButton'">
-                                                        <router-link 
-                                                            :to="{ 
-                                                                name:nameButton.name, 
-                                                                params:{
-                                                                    companyId:body[index].id
-                                                                }
-                                                            }" 
-                                                            :title="nameButton.title"
-                                                            :class="nameButton.classStyle"
-                                                            class="btn btn-sm"
-                                                            data-bs-toggle="tooltip" 
-                                                            data-bs-placement="bottom">
-                                                            <i class="material-icons text-white">{{nameButton.icon}}</i>
-                                                        </router-link>
-
                                                     </template>
+                                                    <!-- <routerComponent
+                                                        :routeParams="nameButton.routeParams"
+                                                        :classStyle="nameButton.classStyle"
+                                                        :title="nameButton.title"
+                                                        :icon="nameButton.icon"
+                                                        :paramId="value.id"
+                                                        :paramName="value.business_name"
+                                                    ></routerComponent> -->
+                                                    
                                                 </template>
                                             </div>
                                         </td>
@@ -81,54 +75,76 @@
 </template>
 
 <script>
-import TableComponent from './common/tableComponent.vue';
-export default {
-    name:"Clientes",
-    components:{
-        TableComponent
-    },
-    props:['companyId'],
-    data(){
-        return {
-            header:{
-                0:'#',
-                1:'Número registro fiscal',
-                2:'Nombre empresa',
-            },
-            body:[],
-            processing:false,
-            
-            buttons:[
+    import TableComponent from './common/tableComponent.vue';
+    export default {
+        name:"Usuarios",
+        components:{
+            TableComponent
+        },
+        props:['companyId'],
+        data(){
+            return {
+                header:{
+                    0:'#',
+                    1:'Email',
+                    2:'Empresa',
+                    3:'Tipo de usuario',
+                },
+                body:[],
+                processing:false,
+                
+                buttons:[
                     {
                         type:'routeButton',
-                        name:"usuarios",
-                        hasParams:true,
-                        // routeParams:{
-                        //     name:"usuarios",
-                        //     params:[
-                        //         "companyId",
-                        //     ],
-                        // },
+                        routeParams:{
+                            haveParams:true,
+                            name:"userForm",
+                            params:[
+                                "userId",
+                            ],
+                        },
                         classStyle:"btn-info",
-                        icon:"add_circle",
-                        title:"Agregar Usuario",
-                    },                    
+                        icon:"edit",
+                        title:"Editar Usuario",
+                    },
+                    {
+                        type:'button',
+                        classStyle:"btn-danger",
+                        icon:"delete",
+                        title:"Eliminar Usuario",
+                        action:"deleteUser"
+                    },
+                    
                 ]
-        }
-    },
-    methods:{
-        async getCompanies(){
-            try {
-                await axios.get('/sanctum/csrf-cookie');
-                const res= await axios.get('/api/company')
-                this.body = res.data.companies
-            } catch ({ response: { data: data_1 } }) {
-                console.log(response)
             }
         },
-    },
-    mounted(){
-        this.getCompanies();
+        methods:{
+            async getUsers(){
+                try {
+                    await axios.get('/sanctum/csrf-cookie');
+                    const res= await axios.get('/api/company/'+ this.companyId +'/users')
+                    this.body = res.data.users.map((value)=>{
+                        return {
+                            id:value.id,
+                            email:value.email,
+                            company:value.person.company.business_name,
+                            type:value.person.type,
+                        };
+                    });
+                    console.log(this.body);
+                } catch ({ response: { data: data_1 } }) {
+                    console.log(response)
+                }
+            },
+            deleteUser(value){
+                console.log(value);
+            },
+            handle_function_call(function_name, value) {
+                this[function_name](value)
+            },
+        },
+        mounted(){
+            this.getUsers();
+        }
     }
-}
 </script>

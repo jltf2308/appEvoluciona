@@ -20,7 +20,8 @@ class Person extends JsonResource
             'fullName' => $this->first_name . ' ' . $this->last_name,
             'email' => $this->email,
             'position' => $this->position,
-            'type' => $this->type
+            'type' => $this->type,
+            'company' => new Company($this->company)
         ];
     }
 }

@@ -18,6 +18,10 @@ const ProfesionalForm = () => import('@/components/forms/ProfesionalForm.vue')
 const ClienteForm = () => import('@/components/forms/ClienteForm.vue')
 const profesionalesAsociados = () => import('@/components/ProfesionalesAsociados.vue')
 const asociarProfesionales = () => import('@/components/forms/AsociarProfesionalesForm.vue')
+const Usuarios = () => import('@/components/Users.vue')
+const UserForm = () => import('@/components/forms/UserForm.vue')
+
+
 /* Authenticated Component */
 
 
@@ -57,6 +61,7 @@ const routes = [
             },
         ]
     },
+    // clientes
     {
         path: "/clientes",
         component: DahboardLayout,
@@ -81,23 +86,40 @@ const routes = [
                 }
             },
             {
-                path: 'profesionales/:companyId',
-                name: "profesionalesAsociados",
-                component: profesionalesAsociados,
-                props: true,
+                name: "usuarios",
+                path: 'company/:companyId?',
+                component: Usuarios,
                 meta: {
-                    title: `Profesionales Asociados`
-                }
+                    title: `Usuarios`
+                },
+                props:true
             },
             {
-                path: 'profesionales/:companyId/asociarProfesionales',
-                name: "asociarProfesionalesForm",
-                component: asociarProfesionales,
-                props: true,
+                name: "userForm",
+                path: ':companyId:?/create',
+                component: UserForm,
                 meta: {
-                    title: `Asociar Profesionales`
+                    title: `userForm`
                 }
             },
+            // {
+            //     path: 'profesionales/:companyId?',
+            //     name: "profesionalesAsociados",
+            //     component: profesionalesAsociados,
+            //     props: true,
+            //     meta: {
+            //         title: `Profesionales Asociados`
+            //     }
+            // },
+            // {
+            //     path: 'profesionales/:companyId/asociarProfesionales',
+            //     name: "asociarProfesionalesForm",
+            //     component: asociarProfesionales,
+            //     props: true,
+            //     meta: {
+            //         title: `Asociar Profesionales`
+            //     }
+            // },
         ]
     },
     {
@@ -125,6 +147,32 @@ const routes = [
             },
         ]
     },
+    // {
+    //     path: "/usuarios",
+    //     component: DahboardLayout,
+    //     meta: {
+    //         middleware: "auth"
+    //     },
+    //     children: [
+    //         {
+    //             name: "usuarios",
+    //             path: 'company/:companyId?',
+    //             component: Usuarios,
+    //             meta: {
+    //                 title: `Usuarios`
+    //             },
+    //             props:true
+    //         },
+            // {
+            //     name: "userForm",
+            //     path: 'create',
+            //     component: UserForm,
+            //     meta: {
+            //         title: `userForm`
+            //     }
+            // },
+    //     ]
+    // },
 ]
 
 const router = createRouter({

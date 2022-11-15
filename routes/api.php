@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // });
     Route::apiResource('company', CompanyController::class);
     Route::apiResource('person', PersonController::class);
+    Route::get('company/{companyId}/users', [UserController::class, 'getUsersCompany']);
     Route::apiResource('user', UserController::class);
     Route::apiResource('professional', ProfessionalController::class);
     // Route::apiResource('questionary', QuestionaryController::class);

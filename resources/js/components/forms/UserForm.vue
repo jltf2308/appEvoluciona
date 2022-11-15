@@ -3,7 +3,7 @@
         <div class="container">
         <div class="row">
             <div class="col-6">
-                <h3>Agregar Cliente</h3>
+                <h3>Agregar Usuario</h3>
             </div>
         </div>
         <br>
@@ -19,8 +19,8 @@
             </div>
             <div v-if="activeItem == 0" class="col-12 tab-pane fade" :class="{ 'active show': isActive(0) }" id="0">
                 <div class="caja sm mb-15 especial">
-                    <h2 class="inline-b mr-15">Proporciona los datos de la empresa</h2> 
-                    <div class="form-group" :class="{'error':invalid.business_name}">
+                    <h2 class="inline-b mr-15">Proporciona los datos del usuario</h2> 
+                    <!-- <div class="form-group" :class="{'error':invalid.business_name}">
                         <label for="business_name">Nombre de la empresa*:</label>
                         <input type="text" name="business_name" class="form-control" id="business_name" placeholder="Nombre de la empresa" v-model="companyData.business_name">
                         <p class="message" v-for="(e_business_name, index) in errors.business_name" :key="index">{{e_business_name}}</p>
@@ -29,7 +29,7 @@
                         <label for="register_number">Número fiscal*: </label>
                         <input type="text" name="register_number" class="form-control" id="register_number" placeholder="Número fiscal" style="text-transform:uppercase;" v-model="companyData.register_number">
                         <p class="message" v-for="(e_register_number, index) in errors.register_number" :key="index">{{e_register_number}}</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <!-- <div v-if="activeItem == 1" class="col-12 tab-pane fade" :class="{ 'active show': isActive(1) }" id="1">
@@ -87,6 +87,7 @@
 
 </template>
 <script>
+    import router from '@/router';
     import axios from 'axios';
     export default {
         data() {

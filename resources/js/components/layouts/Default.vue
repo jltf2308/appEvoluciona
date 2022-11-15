@@ -11,11 +11,14 @@
                         <li class="nav-item">
                             <router-link :to="{name:'dashboard'}" class="nav-link">Inicio</router-link>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" v-if="user.person.type == 'Admin'">
                             <router-link :to="{name:'clientes'}" class="nav-link">Clientes</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link :to="{name:'profesionales'}" class="nav-link">Profesionales</router-link>
+                        </li>
+                        <li class="nav-item" v-if="user.person.type == 'Admin'">
+                            <router-link :to="{name:'usuarios'}" class="nav-link">Usuarios</router-link>
                         </li>
 
                     </ul>

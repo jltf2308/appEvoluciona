@@ -4,6 +4,9 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\User as ResourcesUser;
+use App\Http\Resources\UserCollection;
+use App\Models\Company;
+use App\Models\Person;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +20,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::all();
+        return response()->json([
+            'users'=> new UserCollection($user)
+        ], Response::HTTP_OK);
     }
 
     /**
@@ -66,5 +72,16 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getUsersCompany($companyId)
+    {
+        $people = Person::where('type', '!=', 'Professional')->where('company_id', $companyId)->with('user')->get();
+        $users = $people->map(function ($item, $key) {
+            return $item->user;
+        });
+        return response()->json([
+            'users'=> new UserCollection($users)
+        ], Response::HTTP_OK);
     }
 }

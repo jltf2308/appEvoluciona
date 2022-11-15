@@ -36,12 +36,7 @@ export default {
             body:[],
             processing:false,
             buttons:[
-                {
-                    routeParams:{"btn-info"},
-                    classStyle:"Ver Profesionales Asociados",
-                    icon:"group_add",
-                    title:""
-                }
+                
             ]
         }
     },
