@@ -104,7 +104,7 @@ const routes = [
                 props:true
             },
             {
-                path: 'profesionales/:companyId?',
+                path: 'profesionales/:companyName/:companyId?',
                 name: "profesionalesAsociados",
                 component: profesionalesAsociados,
                 props: true,

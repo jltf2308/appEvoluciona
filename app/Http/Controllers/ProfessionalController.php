@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\PersonCollection;
+use App\Http\Resources\ProfessionalCollection;
 use App\Models\Company;
 use App\Models\Person;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Database\Eloquent\Builder;
 
 class ProfessionalController extends Controller
 {
@@ -15,9 +17,14 @@ class ProfessionalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        
+        $professionals = Person::where('type', 'Professional')->whereDoesntHave('clients', function(Builder $query){
+            $query->where('date_end', '>', date('Y-m-d'));
+        })->get();
+        return response()->json([
+            'people'=> new PersonCollection($professionals),
+        ], Response::HTTP_OK);
     }
 
     /**
@@ -51,7 +58,7 @@ class ProfessionalController extends Controller
     {
         $company = Company::find($id);
         return response()->json([
-            'people'=> new PersonCollection($company->professionals),
+            'people'=> new ProfessionalCollection($company->professionals),
         ], Response::HTTP_OK);
     }
 

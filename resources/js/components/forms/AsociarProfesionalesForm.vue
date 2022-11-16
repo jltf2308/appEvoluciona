@@ -174,9 +174,10 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-4 col-lg-6">
-                    <router-link :to="{name:'clientes'}" class="button secondary sm-block">
+                    <button @click="$router.go(-1)" class="button secondary sm-block">Go Back</button>
+                    <!-- <router-link :to="-1">
                         Cancelar
-                    </router-link>
+                    </router-link> -->
                 </div>
                 <div class="col-12 col-md-8 col-lg-6 text-end hidden-md-down">
                     <button v-if="activeItem > 0" type="button" class="button secondary mr-15" @click.prevent="setActive(parseInt(activeItem) - parseInt(1))">
@@ -322,7 +323,7 @@
             async getPeople(){
                 this.processing = true;
                 await axios.get('/sanctum/csrf-cookie');
-                await axios.get('/api/person').then(({data})=>{
+                await axios.get('/api/professional').then(({data})=>{
                     this.professionals = data.people;
                     this.selectProfessionals = data.people;
                 }).catch(({response})=>{

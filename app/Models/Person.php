@@ -32,6 +32,6 @@ class Person extends Model
     }
 
     public function clients(){
-        return $this->belongsToMany(Company::class);
+        return $this->belongsToMany(Company::class)->withPivot('date_init', 'date_end');;
     }
 }

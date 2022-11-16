@@ -23,7 +23,7 @@ class Company extends Model
 
     public function professionals()
     {
-        return $this->belongsToMany(Person::class);
+        return $this->belongsToMany(Person::class)->withPivot('date_init', 'date_end');
     }
 
     public function users()
