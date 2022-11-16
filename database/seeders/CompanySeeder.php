@@ -30,6 +30,11 @@ class CompanySeeder extends Seeder
                 'business_name' => 'Hispano Soluciones C.A.',
                 'register_number' => '987654321'
             ],
+            [
+                'id' => 3,
+                'business_name' => 'Hispano C.A.',
+                'register_number' => '00000000'
+            ],
         ]);
     }
 }

@@ -103,24 +103,24 @@ const routes = [
                 },
                 props:true
             },
-            // {
-            //     path: 'profesionales/:companyId?',
-            //     name: "profesionalesAsociados",
-            //     component: profesionalesAsociados,
-            //     props: true,
-            //     meta: {
-            //         title: `Profesionales Asociados`
-            //     }
-            // },
-            // {
-            //     path: 'profesionales/:companyId/asociarProfesionales',
-            //     name: "asociarProfesionalesForm",
-            //     component: asociarProfesionales,
-            //     props: true,
-            //     meta: {
-            //         title: `Asociar Profesionales`
-            //     }
-            // },
+            {
+                path: 'profesionales/:companyId?',
+                name: "profesionalesAsociados",
+                component: profesionalesAsociados,
+                props: true,
+                meta: {
+                    title: `Profesionales Asociados`
+                }
+            },
+            {
+                path: 'profesionales/:companyId/asociarProfesionales',
+                name: "asociarProfesionalesForm",
+                component: asociarProfesionales,
+                props: true,
+                meta: {
+                    title: `Asociar Profesionales`
+                }
+            },
         ]
     },
     {

@@ -17,6 +17,13 @@
         <div class="row">
             <TableComponent :header="header" :body="body" :buttons="buttons"></TableComponent>
         </div>
+        <div class="row">
+            <div class="col-12 align-middle">
+                <router-link :to="{name:'clientes'}" class="btn btn-secondary">
+                    Atras
+                </router-link>
+            </div>
+        </div>
     </div>
 </template>
 

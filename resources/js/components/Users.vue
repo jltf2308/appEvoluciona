@@ -1,10 +1,10 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-2">
                 <h3>Usuarios</h3>
             </div>
-            <div class="col-6 text-end align-middle">
+            <div class="col-10 text-end align-middle">
                 <router-link :to="{name:'userForm'}" class="btn btn-primary">
                     Agregar Nuevo Usuario
                 </router-link>
@@ -71,6 +71,13 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12 align-middle">
+                <router-link :to="{name:'clientes'}" class="btn btn-secondary">
+                    Atras
+                </router-link>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -131,7 +138,6 @@
                             type:value.person.type,
                         };
                     });
-                    console.log(this.body);
                 } catch ({ response: { data: data_1 } }) {
                     console.log(response)
                 }

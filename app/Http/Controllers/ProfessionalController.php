@@ -28,7 +28,17 @@ class ProfessionalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        foreach ($request->all() as $key => $value) {
+            
+            $person = Person::find($value['person_id']);
+            $company = Company::find($value['companyId']);
+            $person->clients()->attach($company, ['date_init' => date("Y-m-d", strtotime($value['date_init'])), 'date_end'=> date("Y-m-d", strtotime($value['date_end']))]);
+        }
+        $company = Company::find($request[0]['companyId']);
+        return response()->json([
+            'people'=> new PersonCollection($company->professionals),
+        ], Response::HTTP_OK);
     }
 
     /**

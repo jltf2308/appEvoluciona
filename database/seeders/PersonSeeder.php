@@ -59,7 +59,37 @@ class PersonSeeder extends Seeder
                 'position' => 'Administrador',
                 'type' => 'Client',
                 'company_id' => 2
-            ]
+            ],
+            [
+                'id' => 5,
+                'first_name' => 'Luis',
+                'last_name' => 'Tovar',
+                'register_number' => '11111111',
+                'email' => 'test@test.com',
+                'position' => 'Desarrollador',
+                'type' => 'Professional',
+                'company_id' => 1
+            ],
+            [
+                'id' => 6,
+                'first_name' => 'Fernando',
+                'last_name' => 'Tovar',
+                'register_number' => '22222222',
+                'email' => 'test@test.com',
+                'position' => 'Desarrollador',
+                'type' => 'Professional',
+                'company_id' => 1
+            ],
+            [
+                'id' => 7,
+                'first_name' => 'Carlos',
+                'last_name' => 'Tovar',
+                'register_number' => '33333333',
+                'email' => 'test@test.com',
+                'position' => 'Desarrollador',
+                'type' => 'Professional',
+                'company_id' => 1
+            ],
         ]);
     }
 }
